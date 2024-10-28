@@ -1,6 +1,6 @@
 <div align="center">
 
-# Electron + Next.js 桌面应用
+# Electron + Next.js + Shadcn UI 桌面应用
 
 [English](./README_EN.md) | 中文
 
