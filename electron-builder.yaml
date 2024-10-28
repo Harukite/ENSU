@@ -1,0 +1,52 @@
+appId: "io.github.Harukite.electron-next"
+productName: "Electron Next.JS"
+copyright: "Copyright (c) 2023 Harukite"
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - "out/**/*"
+  - "main/**/*"
+  - "package.json"
+  - "!**/*.map"
+  - "!**/*.md"
+asar: true
+compression: maximum
+win:
+  target: 
+    - "nsis"
+    - "portable"
+  icon: "icon/icon.ico"
+  artifactName: "${productName}-${version}.${ext}"
+linux:
+  target: 
+    - "AppImage"
+    - "deb"
+    - "rpm"
+  icon: "icon"
+  artifactName: "${productName}-${version}.${ext}"
+  category: "Utility"
+mac:
+  target: 
+    - "dmg"
+    - "zip"
+  icon: "icon/icon.icns"
+  artifactName: "${productName}-${version}.${ext}"
+  sign: false
+nsis: 
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "Electron Next.JS"
+  uninstallDisplayName: "Uninstall Electron Next.JS"
+  artifactName: "${productName}-Setup-${version}.${ext}"
+extraResources:
+  - from: "node_modules/electron/dist/locales"
+    to: "locales"
+    filter:
+      - "en-US.pak"
+      - "zh-CN.pak"
+afterPack: "./scripts/afterPack.js"
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
